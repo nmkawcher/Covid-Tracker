@@ -1,16 +1,20 @@
 package com.example.covid19;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -33,38 +37,33 @@ public class AffectedCountries extends AppCompatActivity {
 
     EditText searchET;
     SimpleArcLoader simpleArcLoader;
-    ListView listView;
+    RecyclerView listView;
 
     public static List<CountryModel> countryModelList=new ArrayList<>();
 
     CountryModel countryModel;
     
-    MyCustomAdapter myCustomAdapter;
+    CustomAdapter myCustomAdapter;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affected_countries);
 
+        getSupportActionBar().setTitle("Affected CountryList");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         searchET=findViewById(R.id.edtSearch);
         simpleArcLoader=findViewById(R.id.acloader);
         listView=findViewById(R.id.listView);
+        myCustomAdapter =new CustomAdapter(AffectedCountries.this,countryModelList);
 
-      /*  getSupportActionBar().setTitle("Affected Countries");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true); */
+
+
+
 
         fetchData();
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                startActivity(new Intent(getApplicationContext(),DetailsActivity.class).putExtra("position",position));
-            }
-        });
-
 
         searchET.addTextChangedListener(new TextWatcher() {
             @Override
@@ -75,16 +74,13 @@ public class AffectedCountries extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-                myCustomAdapter.getFilter().filter(s);
-                myCustomAdapter.notifyDataSetChanged();
             }
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                filter(s.toString());
             }
         });
-
         
     }
 
@@ -123,6 +119,8 @@ public class AffectedCountries extends AppCompatActivity {
                                 JSONObject object=jsonObject.getJSONObject("countryInfo");
                                 String  flagUrl=object.getString("flag");
 
+
+
                                 countryModel=new CountryModel(flagUrl,countryName,cases,todayCases,deaths,todayDeaths,recovered,active,critical);
 
                                 countryModelList.add(countryModel);
@@ -131,8 +129,8 @@ public class AffectedCountries extends AppCompatActivity {
                             }
 
 
-                            myCustomAdapter =new MyCustomAdapter(AffectedCountries.this,countryModelList);
-
+                            LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
+                            listView.setLayoutManager(linearLayoutManager);
                             listView.setAdapter(myCustomAdapter);
                             simpleArcLoader.stop();
 
@@ -155,5 +153,23 @@ public class AffectedCountries extends AppCompatActivity {
 
         RequestQueue requestQueue= Volley.newRequestQueue(this);
         requestQueue.add(request);
+    }
+
+    private void filter(String text) {
+        //new array list that will hold the filtered data
+        List<CountryModel> filterdNames = new ArrayList<>();
+
+        //looping through existing elements
+        for (CountryModel s : countryModelList) {
+            //if the existing elements contains the search input
+
+            if (s.getCountry().toLowerCase().contains(text.toLowerCase())) {
+                //adding the element to filtered list
+                filterdNames.add(s);
+            }
+        }
+
+        //calling a method of the adapter class and passing the filtered list
+       myCustomAdapter.filterList(filterdNames);
     }
 }

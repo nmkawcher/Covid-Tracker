@@ -10,6 +10,15 @@ android:background="@color/color_white"
     tools:context=".AffectedCountries">
 
 
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/search_cardview"
+    android:layout_width="match_parent"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="12dp"
+    android:padding="10dp"
+    android:layout_marginBottom="15dp"
+    android:layout_height="wrap_content">
     <EditText
         android:layout_width="match_parent"
         android:layout_height="45dp"
@@ -21,16 +30,27 @@ android:background="@color/color_white"
         android:drawablePadding="15dp"
         android:background="@drawable/et_search_shadow"
         android:drawableLeft="@drawable/ic_search_black_24dp"
-        />
 
-    <ListView
-        android:visibility="gone"
+        />
+</androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_below="@id/search_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardElevation="12dp"
+        app:cardCornerRadius="12dp">
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
+        android:visibility="gone"
         android:id="@+id/listView"
         android:layout_margin="10dp"
-        android:layout_below="@+id/edtSearch"
-        />
+        android:layout_below="@+id/edtSearch"/>
+
 
 
 
@@ -42,5 +62,5 @@ android:background="@color/color_white"
         android:layout_centerInParent="true"
         app:arc_style="simple_arc"
         ></com.leo.simplearcloader.SimpleArcLoader>
-
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

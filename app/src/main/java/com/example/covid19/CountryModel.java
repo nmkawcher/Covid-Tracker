@@ -5,6 +5,8 @@ public class CountryModel {
     private String flag,country,cases,todayCases,deaths,todayDeaths,recovered,active,critical;
 
 
+
+
     public CountryModel(){
 
 
