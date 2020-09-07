@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 
 import org.w3c.dom.Text;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +51,8 @@ public class CustomAdapter extends  RecyclerView.Adapter<CustomAdapter.ViewHolde
                 Toast.makeText(context,countryModelList.get(holder.getAdapterPosition()).getCountry(),Toast.LENGTH_SHORT).show();
 
                 Intent intent =new Intent(context,DetailsActivity.class);
-                Log.e("tag", "onClick:holder positon:  "+holder.getAdapterPosition() );
-                intent.putExtra("value",holder.getAdapterPosition());
+                Log.e("tag", "onClick:holder positon:  "+countryModelList.get(holder.getAdapterPosition()));
+                intent.putExtra("value",countryModelList.get(holder.getAdapterPosition()).getCountry());
                 context.startActivity(intent);
             }
         });

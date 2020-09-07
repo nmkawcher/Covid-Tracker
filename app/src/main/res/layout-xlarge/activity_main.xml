@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:layout_margin="20dp"
     android:background="@color/color_white"
     tools:context=".MainActivity">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewGraph"
         android:layout_width="match_parent"
-        android:layout_height="180dp"
+        android:layout_height="280dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         android:background="@color/color_white"
@@ -45,13 +45,13 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="40dp"
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
 
                   <View
-                      android:layout_width="16dp"
+                      android:layout_width="40dp"
                       android:layout_height="match_parent"
                       android:background="@color/cases"/>
 
@@ -59,20 +59,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="10dp"
-                        android:textSize="16sp"
+                        android:paddingLeft="15dp"
+                        android:textSize="25sp"
                         android:text="Total cases" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="5dp"
                     android:gravity="center_vertical">
 
 
                     <View
-                        android:layout_width="16dp"
+                        android:layout_width="40dp"
                         android:layout_height="match_parent"
                         android:background="@color/recovered"/>
 
@@ -81,18 +81,17 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:textSize="16sp"
-
+                        android:textSize="22sp"
                         android:text="Recovered" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="5dp"
                     android:gravity="center_vertical">
                     <View
-                        android:layout_width="16dp"
+                        android:layout_width="40dp"
                         android:layout_height="match_parent"
                         android:background="@color/active"/>
 
@@ -100,19 +99,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:textSize="16sp"
+                        android:textSize="22sp"
                         android:text="Active" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="20dp"
+                    android:layout_height="40dp"
                     android:layout_marginTop="5dp"
                     android:gravity="center_vertical">
 
 
                     <View
-                        android:layout_width="16dp"
+                        android:layout_width="40dp"
                         android:layout_height="match_parent"
                         android:background="@color/deaths"/>
 
@@ -123,7 +122,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
-                        android:textSize="16sp"
+                        android:textSize="22sp"
                         android:text="Total deaths" />
                 </LinearLayout>
             </LinearLayout>
@@ -483,9 +482,10 @@
     </androidx.cardview.widget.CardView>
 
     <LinearLayout
+        android:layout_marginTop="15dp"
         android:id="@+id/btnTrack_ll"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="80dp"
         android:weightSum="2"
         android:gravity="center"
         android:layout_alignParentBottom="true"
@@ -494,7 +494,7 @@
         <Button
             android:id="@+id/btnTrack"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@drawable/track_country_btn_bg"
             android:onClick="goTrackCountries"
@@ -502,10 +502,7 @@
             android:text="track countries"
             android:textStyle="bold"
             android:textColor="@color/color_white"
-            android:textSize="18sp" />
+            android:textSize="30sp" />
     </LinearLayout>
-
-
-
 
 </RelativeLayout>

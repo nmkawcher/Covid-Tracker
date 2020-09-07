@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+
     android:background="@color/color_white"
     tools:context=".MainActivity">
 
@@ -14,7 +14,6 @@
         android:layout_height="180dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
-        android:background="@color/color_white"
         android:layout_marginRight="20dp"
         app:cardCornerRadius="5dp"
         app:cardElevation="10dp">
@@ -482,6 +481,7 @@
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 
+
     <LinearLayout
         android:id="@+id/btnTrack_ll"
         android:layout_width="match_parent"
@@ -504,8 +504,4 @@
             android:textColor="@color/color_white"
             android:textSize="18sp" />
     </LinearLayout>
-
-
-
-
 </RelativeLayout>

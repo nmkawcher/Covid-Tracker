@@ -1,5 +1,7 @@
 package com.example.covid19;
 
+import java.io.Serializable;
+
 public class CountryModel {
 
     private String flag,country,cases,todayCases,deaths,todayDeaths,recovered,active,critical;
