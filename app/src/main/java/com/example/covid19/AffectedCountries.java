@@ -37,7 +37,7 @@ public class AffectedCountries extends AppCompatActivity {
 
     EditText searchET;
     SimpleArcLoader simpleArcLoader;
-    RecyclerView listView;
+    RecyclerView Rv;
 
     public static List<CountryModel> countryModelList=new ArrayList<>();
 
@@ -56,7 +56,7 @@ public class AffectedCountries extends AppCompatActivity {
 
         searchET=findViewById(R.id.edtSearch);
         simpleArcLoader=findViewById(R.id.acloader);
-        listView=findViewById(R.id.listView);
+        Rv=findViewById(R.id.listView);
         myCustomAdapter =new CustomAdapter(AffectedCountries.this,countryModelList);
 
 
@@ -130,12 +130,12 @@ public class AffectedCountries extends AppCompatActivity {
 
 
                             LinearLayoutManager linearLayoutManager=new LinearLayoutManager(getApplicationContext());
-                            listView.setLayoutManager(linearLayoutManager);
-                            listView.setAdapter(myCustomAdapter);
+                            Rv.setLayoutManager(linearLayoutManager);
+                           Rv.setAdapter(myCustomAdapter);
                             simpleArcLoader.stop();
 
                             simpleArcLoader.setVisibility(View.GONE);
-                            listView.setVisibility(View.VISIBLE);
+                            Rv.setVisibility(View.VISIBLE);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
